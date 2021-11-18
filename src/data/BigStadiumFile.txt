@@ -1,0 +1,254 @@
+﻿stadium,City Id,team,capacity
+Michigan Stadium,1,Michigan,107601
+Beaver Stadium,2,Penn State,106572
+Ohio Stadium,3,Ohio State,104944
+Kyle Field,4,Texas A&M,102733
+Neyland Stadium,5,Tennessee,102455
+Tiger Stadium,6,LSU,102321
+Bryant‚ÄìDenny Stadium,7,Alabama,101821
+Darrell K Royal‚ÄìTexas Memorial Stadium,8,Texas,100119
+Los Angeles Memorial Coliseum,9,Southern California,93607
+Sanford Stadium,10,Georgia,92746
+Rose Bowl,11,UCLA,92542
+Ben Hill Griffin Stadium,12,Florida,88548
+Jordan‚ÄìHare Stadium,13,Auburn,87451
+Memorial Stadium,14,Nebraska,87091
+Bobby Bowden Field at Doak Campbell Stadium,15,Florida State,82300
+Gaylord Family Oklahoma Memorial Stadium,16,Oklahoma,82112
+Memorial Stadium,17,Clemson,81500
+Notre Dame Stadium,18,Notre Dame,80795
+Camp Randall Stadium,19,Wisconsin,80321
+Williams-Brice Stadium,20,South Carolina,80250
+Spartan Stadium,21,Michigan State,75005
+Donald W. Reynolds Razorback Stadium,22,Arkansas,72000
+Sun Devil Stadium Frank Kush Field,23,Arizona State,71706
+Faurot Field,24,Missouri,71168
+Kinnick Stadium,25,Iowa,70585
+Qualcomm Stadium,26,San Diego State,70561
+Husky Stadium,27,Washington,70500
+Lincoln Financial Field,28,Temple,68532
+Heinz Field,29,Pittsburgh,68400
+Lane Stadium,30,Virginia Tech,66233
+Raymond James Stadium,31,USF,65857
+Sun Life Stadium,32,Miami,65326
+Alamodome,33,UTSA,65000
+LaVell Edwards Stadium,34,BYU,63725
+Kenan Memorial Stadium,35,North Carolina,62980
+California Memorial Stadium,36,California,62717
+Liberty Bowl Memorial Stadium,37,Memphis,62380
+Commonwealth Stadium,38,Kentucky,62093
+Jack Trice Stadium,39,Iowa State,61500
+Scott Stadium,40,Virginia,61500
+Davis Wade Stadium,41,Mississippi State,61337
+Jones AT&T Stadium,42,Texas Tech,60862
+Memorial Stadium,43,Illinois,60670
+Vaught‚ÄìHemingway Stadium,44,Mississippi,60580
+Boone Pickens Stadium,45,Oklahoma State,60218
+Mountaineer Field at Milan Puskar Stadium,46,West Virginia,60000
+Carter‚ÄìFinley Stadium,47,NC State,57583
+Ross‚ÄìAde Stadium,48,Purdue,56400
+Bobby Dodd Stadium at Historic Grant Field,49,Georgia Tech,55000
+Papa John's Cardinal Stadium,50,Louisville,55000
+Autzen Stadium,51,Oregon,54000
+Memorial Stadium,52,Indiana,52959
+TCF Bank Stadium,53,Minnesota,52525
+High Point Solutions Stadium,54,Rutgers,52454
+Arizona Stadium,55,Arizona,51811
+Byrd Stadium,56,Maryland,51802
+Sun Bowl Stadium,57,UTEP,51500
+Folsom Field,58,Colorado,50183
+Memorial Stadium,59,Kansas,50071
+Aloha Stadium,60,Hawaii,50000
+Dowdy‚ÄìFicklen Stadium,61,East Carolina,50000
+Bill Snyder Family Football Stadium,62,Kansas State,50000
+Stanford Stadium,63,Stanford,50000
+Carrier Dome,64,Syracuse,49250
+Ryan Field,65,Northwestern,47130
+Rice Stadium,66,Rice,47000
+Falcon Stadium,67,Air Force,46692
+Reser Stadium,68,Oregon State,45674
+Bright House Networks Stadium,69,UCF,45323
+McLane Stadium,70,Baylor,45140
+Rice-Eccles Stadium,71,Utah,45017
+Amon G. Carter Stadium,72,TCU,45000
+Alumni Stadium,73,Boston College,44500
+Bulldog Stadium,74,Fresno State,41031
+Vanderbilt Stadium,75,Vanderbilt,40350
+Rentschler Field,76,Connecticut,40000
+Nippert Stadium,77,Cincinnati,40000
+TDECU Stadium,78,Houston,40000
+University Stadium,79,New Mexico,39224
+Joan C. Edwards Stadium,80,Marshall,38019
+Michie Stadium,81,Army,38000
+Albertsons Stadium,82,Boise State,37000
+Cajun Field,83,Louisiana-Lafayette,36900
+Sam Boyd Stadium,84,UNLV,36800
+M. M. Roberts Stadium,85,Southern Miss,36000
+Skelly Field at H. A. Chapman Stadium,86,Tulsa,35542
+Sonny Lubick Field at Hughes Stadium,87,Colorado State,34400
+Navy‚ÄìMarine Corps Memorial Stadium,88,Navy,34000
+Wallace Wade Stadium,89,Duke,33941
+Ladd Peebles Stadium,90,South Alabama,33500
+Kelly/Shorts Stadium,91,Central Michigan,32885
+Martin Stadium,92,Washington State,32248
+Gerald J. Ford Stadium,93,SMU,32000
+BB&T Field,94,Wake Forest,31500
+"Johnny ""Red"" Floyd Stadium",95,Middle Tennessee,31000
+Centennial Bank Stadium,96,Arkansas State,30964
+Apogee Stadium,97,North Texas,30850
+Joe Aillet Stadium,98,Louisiana Tech,30600
+Spartan Stadium,99,San Jose State,30456
+Malone Stadium,100,Louisiana-Monroe,30427
+Aggie Memorial Stadium,101,New Mexico State,30343
+Waldo Stadium,102,Western Michigan,30200
+Rynearson Stadium,103,Eastern Michigan,30200
+Mackay Stadium,104,Nevada,30000
+Bobcat Stadium,105,Texas State,30000
+Summa Field at InfoCision Stadium,106,Akron,30000
+FAU Stadium,107,Florida Atlantic,30000
+Veterans Memorial Stadium,108,Troy,30000
+Benson Field at Yulman Stadium,109,Tulane,30000
+War Memorial Stadium,110,Wyoming,29181
+UB Stadium,111,Buffalo,29013
+Georgia Dome,112,Georgia State,28155
+Glass Bowl,113,Toledo,26248
+Romney Stadium,114,Utah State,25513
+Huskie Stadium,115,NIU,25500
+Dix Stadium,116,Kent State,25000
+Paulson Stadium,117,Georgia Southern,24300
+Yager Stadium,118,Miami (OH),24286
+Kidd Brewer Stadium,119,Appalachian State,24050
+Peden Stadium,120,Ohio,24000
+Doyt Perry Stadium,121,Bowling Green,23724
+FIU Stadium,122,FIU,23500
+Scheumann Stadium,123,Ball State,22500
+Houchens Industries‚ÄìL. T. Smith Stadium,124,Western Kentucky,22113
+Foreman Field,125,Old Dominion,20118
+Warren McGuirk Alumni Stadium,126,UMass,17000
+Kibbie Dome,127,Idaho,16000
+Jerry Richardson Stadium,128,Charlotte,15314
+LP Field,129,Tennessee State Tigers,68798
+Yale Bowl,130,Yale Bulldogs,61446
+Mississippi Veterans Memorial Stadium,131,Jackson State Tigers,60492
+Franklin Field,132,Penn Quakers,52593
+Harvard Stadium,133,Harvard Crimson,30323
+"William ""Dick"" Price Stadium",134,Norfolk State Spartans,30000
+Ace W. Mumford Stadium,135,Southern Jaguars,28500
+Princeton University Stadium,136,Princeton Tigers,27800
+Hornet Stadium,137,Alabama State Hornets,26500
+Schoellkopf Field,138,Cornell Big Red,25597
+Bragg Memorial Stadium,139,Florida A&M Rattlers,25500
+Washington‚ÄìGrizzly Stadium,140,Montana Grizzlies,25200
+Bridgeforth Stadium,141,James Madison Dukes,24878
+JSU Stadium,142,Jacksonville State Gamecocks,24000
+Fitton Field,143,Holy Cross Crusaders,23500
+Jack Spinks Stadium,144,Alcorn State Braves,22500
+BBVA Compass Stadium,145,Texas Southern Tigers,22039
+Oliver C. Dawson Stadium,146,South Carolina State Bulldogs,22000
+Delaware Stadium,147,Delaware Fightin' Blue Hens,22000
+Aggie Stadium,148,North Carolina A&T Aggies,21500
+Hornet Stadium,149,Sacramento State Hornets,21195
+Johnson Hagood Stadium,150,The Citadel Bulldogs,21000
+Louis Crews Stadium,151,Alabama A&M Bulldogs,21000
+Finley Stadium,152,Chattanooga Mocs,20668
+Stambaugh Stadium,153,Youngstown State Penguins,20650
+Roy Kidd Stadium,154,Eastern Kentucky Colonels,20000
+Brown Stadium,155,Brown Bears,20000
+Eddie Robinson Stadium,156,Grambling State Tigers,19600
+Providence Park,157,Portland State Vikings,19566
+Williams Stadium,158,Liberty Flames,19200
+Fargodome,159,North Dakota State Bison,19000
+Bobcat Stadium,160,Montana State Bobcats,19000
+Plaster Sports Complex,161,Missouri State Bears,17500
+Cowboy Stadium,162,McNeese State Cowboys,17410
+Stewart Stadium,163,Weber State Wildcats,17000
+Armstrong Stadium,164,Hampton Pirates,17000
+Lawrence A. Wien Stadium,165,Columbia Lions,17000
+Roy Stewart Stadium,166,Murray State Racers,16800
+Tucker Stadium,167,Tennessee Tech Golden Eagles,16500
+Hanson Field,168,Western Illinois Leathernecks,16368
+UNI-Dome,169,Northern Iowa Panthers,16000
+Provost Umphrey Stadium,170,Lamar Cardinals,16000
+Paladin Stadium,171,Furman Paladins,16000
+Goodman Stadium,172,Lehigh Mountain Hawks,16000
+Golden Lion Stadium,173,Arkansas‚ÄìPine Bluff Golden Lions,16000
+Harry Turpin Stadium,174,Northwestern State Demons,15971
+Walkup Skydome,175,Northern Arizona Lumberjacks,15300
+Saluki Stadium,176,Southern Illinois Salukis,15276
+Shotwell Stadium,177,Abilene Christian Wildcats,15075
+Memorial Field,178,Dartmouth Big Green,15000
+Hancock Stadium,179,Illinois State Redbirds,15000
+Coughlin‚ÄìAlumni Stadium,180,South Dakota State Jackrabbits,15000
+Homer Bryce Stadium,181,Stephen F. Austin Lumberjacks,15000
+Drake Stadium,182,Drake Bulldogs,14557
+Bowers Stadium,183,Sam Houston State Bearkats,14000
+E. J. Whitmire Stadium,184,Western Carolina Catamounts,13742
+Fisher Field,185,Lafayette Leopards,13132
+Christy Mathewson‚ÄìMemorial Stadium,186,Bucknell Bison,13100
+Gibbs Stadium,187,Wofford Terriers,13000
+Villanova Stadium,188,Villanova Wildcats,12500
+Memorial Stadium,189,Indiana State Sycamores,12464
+Alerus Center,190,North Dakota,12283
+Zable Stadium,191,William & Mary Tribe,12259
+Holt Arena,192,Idaho State Bengals,12000
+Rhodes Stadium,193,Elon Phoenix,11250
+Alex G. Spanos Stadium,194,Cal Poly Mustangs,11075
+Houck Stadium,195,Southeast Missouri State Redhawks,11015
+Johnny Unitas Stadium,196,Towson Tigers,11000
+Welcome Stadium,197,Dayton Flyers,11000
+Aggie Stadium,198,UC Davis Aggies,10849
+John L. Guidry Stadium,199,Nicholls State Colonels,10500
+Andy Kerr Stadium,200,Colgate Raiders,10221
+Moye Complex,201,Mercer Bears,10200
+O'Kelly‚ÄìRiddick Stadium,202,North Carolina Central Eagles,10000
+O'Brien Stadium,203,Eastern Illinois Panthers,10000
+Jayne Stadium,204,Morehead State Eagles,10000
+Alumni Memorial Field,205,VMI Keydets,10000
+Governors Stadium,206,Austin Peay Governors,10000
+Alfond Stadium,207,Maine Black Bears,10000
+DakotaDome,208,South Dakota Coyotes,10000
+Kermit Tipton Stadium,209,East Tennessee State Buccaneers,6600
+Hughes Stadium,210,Morgan State Bears,10000
+Municipal Stadium,211,Bethune‚ÄìCookman Wildcats,10000
+Rice‚ÄìTotten Field,212,Mississippi Valley State Delta Devils,10000
+William H. Greene Stadium,213,Howard Bison,10000
+Brooks Stadium,214,Coastal Carolina Chanticleers,9214
+E. Claiborne Robins Stadium,215,Richmond Spiders,9000
+Estes Stadium,216,Central Arkansas Bears,9000
+Roos Field,217,Eastern Washington Eagles,8600
+Nottingham Field,218,Northern Colorado Bears,8533
+Eccles Coliseum,219,Southern Utah Thunderbirds,8500
+Bob Ford Field,220,Albany Great Danes,8500
+Ernest W. Spangler Stadium,221,Gardner‚ÄìWebb Runnin' Bulldogs,8500
+Fifth Third Bank Stadium,222,Kennesaw State Owls,8318
+Kenneth P. LaValle Stadium,223,Stony Brook Seawolves,8200
+Graham Stadium,224,UT Martin Skyhawks,8000
+Cowell Stadium,225,New Hampshire Wildcats,8000
+Ted Wright Stadium,226,Savannah State Tigers,7500
+Strawberry Stadium,227,Southeastern Louisiana Lions,7408
+Alumni Stadium,228,Delaware State Hornets,7000
+Coffey Field,229,Fordham Rams,7000
+Seibert Stadium,230,Samford Bulldogs,6700
+Bailey Memorial Stadium,231,Presbyterian Blue Hose,6500
+Richardson Stadium,232,Davidson Wildcats,6000
+Gayle and Tom Benson Stadium,233,Incarnate Word Cardinals,6000
+Blackshear Field,234,Prairie View A&M Panthers,6000
+Spec Martin Municipal Stadium,235,Stetson Hatters,6000
+Torero Stadium,236,San Diego Toreros,6000
+Butler Bowl,237,Butler Bulldogs,5500
+Meade Stadium,238,Rhode Island Rams,5180
+Leonidoff Field,239,Marist Red Foxes,5000
+Husky Stadium,240,Houston Baptist Huskies,5000
+Brown Field,241,Valparaiso Crusaders,5000
+Barker‚ÄìLane Stadium,242,Campbell Fighting Camels,5000
+D. B. Milne Field,243,Jacksonville Dolphins,5000
+Bulldog Stadium,244,Bryant Bulldogs,4400
+Kessler Field,245,Monmouth Hawks,4000
+Buccaneer Field,246,Charleston Southern Buccaneers,4000
+Campus Field,247,Sacred Heart Pioneers,4000
+Arute Field,248,Central Connecticut State Blue Devils,3500
+DeGol Field,249,Saint Francis Red Flash,3500
+Wagner College Stadium,250,Wagner Seahawks,3300
+Joe Walton Stadium,251,Robert Morris Colonials,3000
+Cooper Field,252,Georgetown Hoyas,2500
+Arthur J. Rooney Athletic Field,253,Duquesne Dukes,2200

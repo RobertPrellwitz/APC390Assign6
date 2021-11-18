@@ -1,0 +1,4 @@
+City, City ID, Population in Millions
+Mequon, 1, 0.23
+Madison, 2, 0.89
+Stevens Point, 3, 1
