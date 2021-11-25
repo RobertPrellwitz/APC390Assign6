@@ -38,4 +38,10 @@ public class CityRow extends AbstractRow {
       return  Integer.parseInt(this.getCityID()) == Integer.parseInt(row.getCityID());
     }
 
+    @Override
+    public String getId(){
+
+        return cityId;
+    }
+
 }
