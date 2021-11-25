@@ -17,51 +17,54 @@ public class StadiumTable extends AbstractTable {
         super();
     }
 
-    public void loadTableFromFile(String fileName)  {
+    public void loadTableFromFile(String fileName) {
         try {
-        Scanner loadFile = new Scanner(new FileReader("src/data/" + fileName));
-        String input;
+            Scanner loadFile = new Scanner(new FileReader("src/data/" + fileName));
+            String input;
 
             int duplicates = 0;
             int errors = 0;
             int records = 0;
             setHeader(loadFile.nextLine());
             while (loadFile.hasNext()) {
-                    input = loadFile.nextLine();
-                    boolean isEmpty = (input == null || input.trim().isEmpty());
-                    try {
-                        if (!isEmpty) {
+                input = loadFile.nextLine();
+                boolean isEmpty = (input == null || input.trim().isEmpty());
+                try {
+                    if (!isEmpty) {
 
-                            // OPTIMIZE - Changed from the original Array to use a List - I think this is less efficient
-                                // Professor could you please comment on what is the best Approach
+                        // OPTIMIZE - Changed from the original Array to use a List - I think this is less efficient
+                        // Professor could you please comment on what is the best Approach
 
-                            List<String> stadium =new ArrayList<>();
-                            stadium.add(input.split("\\s*,\\s*", 4)[0]);
-                            stadium.add(input.split("\\s*,\\s*", 4)[1]);
-                            stadium.add(input.split("\\s*,\\s*", 4)[2]);
-                            stadium.add(input.split("\\s*,\\s*", 4)[3]);
-                           StadiumRow newRow = new StadiumRow(stadium.get(0),stadium.get(1),stadium.get(2),stadium.get(3));
+                        List<String> stadium = new ArrayList<>();
+                        stadium.add(input.split("\\s*,\\s*", 4)[0]);
+                        stadium.add(input.split("\\s*,\\s*", 4)[1]);
+                        stadium.add(input.split("\\s*,\\s*", 4)[2]);
+                        stadium.add(input.split("\\s*,\\s*", 4)[3]);
+                        StadiumRow newRow = new StadiumRow(stadium.get(0), stadium.get(1), stadium.get(2), stadium.get(3));
 
-                            // Refactor - perhaps this is better as originally coded - comment code below is initial implementation
+                        // Refactor - perhaps this is better as originally coded - comment code below is initial implementation
 
 //                              String[] array = input.split("\\s*,\\s*", 4);
 //                              StadiumRow newRow = new StadiumRow(array[0], array[1], array[2], array[3]);
 
-                            if (!isNumeric(stadium.get(1)) || !isNumeric(stadium.get(3))) {
-                                errors++;
-                                throw new InputException();
-                            }
-                            boolean check = duplicate(newRow);
-                            if (!check) {
-                                setRow(newRow);
-                                incrementCounter();
-                                records++;
-                            } else {
-                                duplicates++;
-                            }
+                        if (!isNumeric(stadium.get(1)) || !isNumeric(stadium.get(3))) {
+                            errors++;
+                            throw new InputException();
                         }
-                    } catch (Exception ignored) {
+                        boolean check = duplicate(newRow);
+                        if (!check) {
+                            setRow(newRow);
+                            incrementCounter();
+                            records++;
+                        } else {
+                            duplicates++;
+                        }
                     }
+                    if (getCounter() > 1) {
+                        IdSort();
+                    }
+                } catch (Exception ignored) {
+                }
             }
             JOptionPane.showMessageDialog(null, "There were  " + duplicates + " duplicate records in  the data file.\n" +
                     " Duplicate items not added to the table.\n" +
@@ -72,19 +75,22 @@ public class StadiumTable extends AbstractTable {
             JOptionPane.showMessageDialog(null, fnfe + "\nThe file name / path you entered appers to be invalid.");
         } catch (NoSuchElementException nsee) {
             JOptionPane.showMessageDialog(null, nsee);
-        }catch (Exception exp) {
+        } catch (Exception exp) {
             JOptionPane.showMessageDialog(null, exp + "\nThe file does not conform to the required data stucture:");
         }
 
     }
+
     @Override
     public void saveTableToFile(String fileName) throws FileNotFoundException {
         PrintWriter fileOutput = new PrintWriter("src/output/" + fileName);
         String header, stadium, stadiumId, teamName, capacity;
         StadiumRow set;
-        if(getHeader() == null){
+        if (getHeader() == null) {
             header = "Stadium, Stadium ID, Team Name, Capacity";
-        }else {header = getHeader();}
+        } else {
+            header = getHeader();
+        }
         fileOutput.println(header);
         for (int i = 0; i < getCounter(); i++) {
             set = (StadiumRow) getRow(i);
@@ -96,6 +102,7 @@ public class StadiumTable extends AbstractTable {
         }
         fileOutput.close();
     }
+
     // allows user to manually input a data row
     @Override
     public void addRow() {
@@ -124,13 +131,13 @@ public class StadiumTable extends AbstractTable {
     }
 
     //checks to determine if the row item is a duplicate
-    public boolean duplicate(StadiumRow newRow){
+    public boolean duplicate(StadiumRow newRow) {
         boolean duplicate = false;
         int count = 0;
         int currentTot = getCounter();
         while (!duplicate && count < currentTot) {
             StadiumRow check = (StadiumRow) getRow(count);
-             duplicate = check.equal(newRow);
+            duplicate = check.equal(newRow);
             count++;
         }
         return duplicate;
@@ -143,7 +150,8 @@ public class StadiumTable extends AbstractTable {
             int numberToRemoveFromTable = selection();
             StadiumRow set;
             int range = getCounter();
-            int number; boolean check = true;
+            int number;
+            boolean check = true;
             for (int i = 0; i < range; i++) {
                 set = (StadiumRow) getRow(i);
                 number = Integer.parseInt(set.getStadiumId());
@@ -154,16 +162,17 @@ public class StadiumTable extends AbstractTable {
                     break;
                 }
             }
-                if(check) {
-                    JOptionPane.showMessageDialog(null, "The Number you entered: " + numberToRemoveFromTable
-                                    + " did not match a record in the table. \n  Nothing deleted.  Please try again.", "Record Not Found",
-                            JOptionPane.WARNING_MESSAGE);
-                }
+            if (check) {
+                JOptionPane.showMessageDialog(null, "The Number you entered: " + numberToRemoveFromTable
+                                + " did not match a record in the table. \n  Nothing deleted.  Please try again.", "Record Not Found",
+                        JOptionPane.WARNING_MESSAGE);
+            }
 
         } catch (NumberFormatException nfe) {
             JOptionPane.showMessageDialog(null, nfe, "Invalid Input", JOptionPane.ERROR_MESSAGE);
         }
     }
+
     // searhes for a row with matching stadium name
     @Override
     public String findRow(String stadium) {
@@ -184,6 +193,19 @@ public class StadiumTable extends AbstractTable {
         return row;
     }
 
+    public StadiumRow search(int id) {
+        StadiumRow row = null;
+        int count = getCounter();
+        for (int i = 0; i < count; i++) {
+            row = (StadiumRow) getRow(i);
+            if (id == Integer.parseInt(row.getStadiumId())) {
+                return row;
+            }
+        }
+        return row;
+    }
+
+
     // Method to display the current contents of the table
     @Override
     public String displayData() {
@@ -196,6 +218,7 @@ public class StadiumTable extends AbstractTable {
         }
         return display.toString();
     }
+
     // creates list panel with data to help user determine which item to delete.
     public int selection() {
         JPanel panel;

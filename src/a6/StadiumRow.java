@@ -1,6 +1,6 @@
 package a6;
 
-public class StadiumRow extends AbstractRow  {
+public class StadiumRow extends AbstractRow implements Comparable<StadiumRow>   {
     // class data members
     private final String stadiumName;
     private final String stadiumId;
@@ -38,4 +38,16 @@ public class StadiumRow extends AbstractRow  {
         return this.getTeamName().equals(row.getTeamName()) || Integer.parseInt(this.getStadiumId()) == Integer.parseInt(row.getStadiumId());
 
     }
+    public int compareTo(StadiumRow row){
+        return 0;
+    }
+    @Override
+    public String getId(){
+
+        return stadiumId;
+    }
+//    @Override
+//    public int compareTo(AbstractRow row) {
+//        return 0;
+//    }
 }

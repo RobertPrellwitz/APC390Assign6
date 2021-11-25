@@ -29,27 +29,30 @@ public class CityTable extends AbstractTable {
             int records = 0;
             setHeader(loadFile.nextLine());
             while (loadFile.hasNext()) {
-                    input = loadFile.nextLine();
-                    boolean isEmpty = (input == null || input.trim().isEmpty());
-                    try {
-                        if (!isEmpty) {
-                            String[] array = input.split("\\s*,\\s*", 3);
-                            CityRow newRow = new CityRow(array[0], array[1], array[2]);
-                            if (!isNumeric(array[1]) || !(isNumeric(array[2]) || array[2].matches("^\\d+\\.\\d+"))) {
-                               errors++;
-                                throw new InputException();
-                            }
-                            boolean check = duplicate(newRow);
-                            if (!check) {
-                                setRow(newRow);
-                               incrementCounter();
-                               records++;
-                            } else {
-                                duplicates++;
-                            }
+                input = loadFile.nextLine();
+                boolean isEmpty = (input == null || input.trim().isEmpty());
+                try {
+                    if (!isEmpty) {
+                        String[] array = input.split("\\s*,\\s*", 3);
+                        CityRow newRow = new CityRow(array[0], array[1], array[2]);
+                        if (!isNumeric(array[1]) || !(isNumeric(array[2]) || array[2].matches("^\\d+\\.\\d+"))) {
+                            errors++;
+                            throw new InputException();
                         }
-                    } catch (Exception ignored) {
+                        boolean check = duplicate(newRow);
+                        if (!check) {
+                            setRow(newRow);
+                            incrementCounter();
+                            records++;
+                        } else {
+                            duplicates++;
+                        }
                     }
+                } catch (Exception ignored) {
+                }
+                if (getCounter() > 1) {
+                    IdSort();
+                }
             }
             JOptionPane.showMessageDialog(null, "There were  " + duplicates + " duplicate records in  the data file.\n" +
                     " Duplicate items not added to the table.\n" +
@@ -65,15 +68,18 @@ public class CityTable extends AbstractTable {
             JOptionPane.showMessageDialog(null, exp + "\nThe file does not conform to the required data stucture:");
         }
     }
+
     //saves the current data table to a text file
     public void saveTableToFile(String fileName) throws FileNotFoundException {
         PrintWriter fileOutput = new PrintWriter("src/output/" + fileName);
 
         String city, cityId, population, header;
         CityRow cityRow;
-        if(getHeader() == null){
+        if (getHeader() == null) {
             header = "City, City ID, Population in Millions";
-        }else {header = getHeader();}
+        } else {
+            header = getHeader();
+        }
         fileOutput.println(header);
 
         for (int i = 0; i < getCounter(); i++) {
@@ -85,6 +91,7 @@ public class CityTable extends AbstractTable {
         }
         fileOutput.close();
     }
+
     // allows user to manually add a row of data to the table
     @Override
     public void addRow() {
@@ -101,11 +108,12 @@ public class CityTable extends AbstractTable {
         boolean duplicate = duplicate(newRow);
         if (duplicate) {
             JOptionPane.showMessageDialog(null, newRow.getCityName() + " is a duplicate - data can't be added");
-        } else  {
+        } else {
             setRow(newRow);
             incrementCounter();
         }
     }
+
     // checks for duplicate items when adding a new data row to the table
     public boolean duplicate(CityRow newRow) {
         boolean duplicate = false;
@@ -118,13 +126,15 @@ public class CityTable extends AbstractTable {
         }
         return duplicate;
     }
+
     // deletes a data row based on city Id
     public void removeRow() {
         try {
             int numberToRemoveFromTable = selection();
             CityRow cityRow;
             int range = getCounter();
-            int number; boolean check = true;
+            int number;
+            boolean check = true;
             for (int i = 0; i < range; i++) {
                 cityRow = (CityRow) getRow(i);
                 number = Integer.parseInt(cityRow.getCityID());
@@ -139,11 +149,12 @@ public class CityTable extends AbstractTable {
                 JOptionPane.showMessageDialog(null, "The Number you enetered: " + numberToRemoveFromTable
                                 + " did not match a record in the table. \n  Nothing deleted.  Please try again.", "Record Not Found",
                         JOptionPane.WARNING_MESSAGE);
-                }
+            }
         } catch (NumberFormatException nfe) {
             JOptionPane.showMessageDialog(null, nfe, "Invalid Input", JOptionPane.ERROR_MESSAGE);
         }
     }
+
     // looks for a data row that has a matching city Name
     public String findRow(String name) {
         name = name.toLowerCase();
