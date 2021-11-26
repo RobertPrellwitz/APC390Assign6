@@ -70,6 +70,38 @@ public abstract class AbstractTable {
         return number;
     }
 
+    public void removeRow() {
+        try {
+            int numberToRemoveFromTable = selection();
+            int row = idSearch(numberToRemoveFromTable);
+            boolean check = true;
+            if (row >= 0) {
+                deleteRow(row);
+                decrementCounter();
+                check = false;
+            }
+
+            if (check) {
+                JOptionPane.showMessageDialog(null, "The Number you entered: " + numberToRemoveFromTable
+                                + " did not match a record in the table. \n  Nothing deleted.  Please try again.", "Record Not Found",
+                        JOptionPane.WARNING_MESSAGE);
+            }
+
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(null, nfe, "Invalid Input", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public int selection() {
+        JPanel panel;
+        panel = createPanel();
+        String input = JOptionPane.showInputDialog(null, panel, "Please Enter the ID to Remove", JOptionPane.PLAIN_MESSAGE);
+        if (!isNumeric(input))
+            throw new InputException("\nYou must enter a valid ID as a number to delete a data element.");
+        return Integer.parseInt(input);
+    }
+
+    // sorts that table by ID field
     public void IdSort() {
         AbstractRow one, two;
         int size = counter;
@@ -80,7 +112,7 @@ public abstract class AbstractTable {
             int first = Integer.parseInt(one.getId());
             int second = Integer.parseInt(two.getId());
 
-            if (second < first ) {
+            if (second < first) {
                 AbstractRow temp = two;
                 int location = i;
                 do {
@@ -94,15 +126,89 @@ public abstract class AbstractTable {
                 }
             }
         }
-
     }
 
-    public AbstractRow repSearch(int id) {
-        AbstractRow tempRow = null;
-//        for(row : tableRow){
-//            row.
-//        }
-        return tempRow;
+    // sorts the current table by size field (capacity for stadium - population for city etc)
+    public void sizeSort() {
+        AbstractRow one, two;
+        int size = counter;
+        for (int i = 1; i < counter; i++) {
+            one = tableRow.get(i - 1);
+            two = tableRow.get(i);
+
+            double first = Double.parseDouble(one.getSize());
+            double second = Double.parseDouble(two.getSize());
+
+            if (second < first) {
+                AbstractRow temp = two;
+                int location = i;
+                do {
+                    //tableRow.set(location, two);
+                    tableRow.set(location, tableRow.get(location - 1));
+                    location--;
+                }
+                while (location > 0 && Double.parseDouble(tableRow.get(location - 1).getId()) > Double.parseDouble(temp.getId()));
+                {
+                    tableRow.set(location, temp);
+                }
+            }
+        }
+    }
+
+    // sorting
+    public void bubbleSort() {
+        AbstractRow one, two;
+        final int length = counter; // assume locations 0-size-1 are not null!
+        for (int size = 0; size < length - 1; size++) {
+            for (int index = 0; index < length - 1 - size; index++){
+                one = tableRow.get(index);
+                two = tableRow.get(index + 1);
+            if (Integer.parseInt(one.getId()) > Integer.parseInt(two.getId())) {
+                // Swap
+               // temp = one;
+                tableRow.set(index, one);
+                tableRow.set(index + 1, two);
+            }
+        }
+        }
+    }
+
+
+
+    //sorts the tqble by Name Value
+    public void nameSort() {
+    }
+
+    public AbstractRow repSearch(int searchId) {
+        int size = tableRow.size();
+        int first = 0, last = size - 1, middle = first;
+        boolean found = false;
+        while ((first <= last) && !found) {
+            middle = (first + last) / 2;
+            int id = Integer.parseInt(tableRow.get(middle).getId());
+            if (id == searchId)
+                found = true;
+            else if (id > searchId)
+                last = middle - 1;
+            else first = middle + 1;
+        }
+        return found ? tableRow.get(middle) : null;
+    }
+
+    public int idSearch(int searchId) {
+        int size = tableRow.size();
+        int first = 0, last = size - 1, middle = first;
+        boolean found = false;
+        while ((first <= last) && !found) {
+            middle = (first + last) / 2;
+            int id = Integer.parseInt(tableRow.get(middle).getId());
+            if (id == searchId)
+                found = true;
+            else if (id > searchId)
+                last = middle - 1;
+            else first = middle + 1;
+        }
+        return found ? middle : -1;
     }
 
     // creates a panel for displaying data in delete and display options
@@ -122,7 +228,7 @@ public abstract class AbstractTable {
     //Abstract class methods to be overridden in Concrete Classes
     abstract void addRow();
 
-    abstract void removeRow();
+    //abstract void removeRow();
 
     abstract String displayData();
 

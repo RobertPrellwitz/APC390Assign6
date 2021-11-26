@@ -128,32 +128,32 @@ public class CityTable extends AbstractTable {
     }
 
     // deletes a data row based on city Id
-    public void removeRow() {
-        try {
-            int numberToRemoveFromTable = selection();
-            CityRow cityRow;
-            int range = getCounter();
-            int number;
-            boolean check = true;
-            for (int i = 0; i < range; i++) {
-                cityRow = (CityRow) getRow(i);
-                number = Integer.parseInt(cityRow.getCityID());
-                if (number == numberToRemoveFromTable) {
-                    deleteRow(i);
-                    decrementCounter();
-                    check = false;
-                    break;
-                }
-            }
-            if (check) {
-                JOptionPane.showMessageDialog(null, "The Number you enetered: " + numberToRemoveFromTable
-                                + " did not match a record in the table. \n  Nothing deleted.  Please try again.", "Record Not Found",
-                        JOptionPane.WARNING_MESSAGE);
-            }
-        } catch (NumberFormatException nfe) {
-            JOptionPane.showMessageDialog(null, nfe, "Invalid Input", JOptionPane.ERROR_MESSAGE);
-        }
-    }
+//    public void removeRow() {
+//        try {
+//            int numberToRemoveFromTable = selection();
+//            CityRow cityRow;
+//            int range = getCounter();
+//            int number;
+//            boolean check = true;
+//            for (int i = 0; i < range; i++) {
+//                cityRow = (CityRow) getRow(i);
+//                number = Integer.parseInt(cityRow.getCityID());
+//                if (number == numberToRemoveFromTable) {
+//                    deleteRow(i);
+//                    decrementCounter();
+//                    check = false;
+//                    break;
+//                }
+//            }
+//            if (check) {
+//                JOptionPane.showMessageDialog(null, "The Number you enetered: " + numberToRemoveFromTable
+//                                + " did not match a record in the table. \n  Nothing deleted.  Please try again.", "Record Not Found",
+//                        JOptionPane.WARNING_MESSAGE);
+//            }
+//        } catch (NumberFormatException nfe) {
+//            JOptionPane.showMessageDialog(null, nfe, "Invalid Input", JOptionPane.ERROR_MESSAGE);
+//        }
+//    }
 
     // looks for a data row that has a matching city Name
     public String findRow(String name) {
@@ -187,13 +187,13 @@ public class CityTable extends AbstractTable {
     }
 
     // creates list panel with data to help user determine which item to delete.
-    public int selection() {
-        JPanel panel;
-        panel = createPanel();
-        String input = JOptionPane.showInputDialog(null, panel, "Please Enter the Stadium ID to Remove", JOptionPane.PLAIN_MESSAGE);
-        if (!isNumeric(input))
-            throw new InputException("\nYou must enter the City ID as a number to delete a data element.");
-        return Integer.parseInt(input);
-    }
+//    public int selection() {
+//        JPanel panel;
+//        panel = createPanel();
+//        String input = JOptionPane.showInputDialog(null, panel, "Please Enter the Stadium ID to Remove", JOptionPane.PLAIN_MESSAGE);
+//        if (!isNumeric(input))
+//            throw new InputException("\nYou must enter the City ID as a number to delete a data element.");
+//        return Integer.parseInt(input);
+//    }
 
 }

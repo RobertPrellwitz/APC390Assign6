@@ -20,6 +20,7 @@ public abstract class AbstractRow {
        return info;
     }
     abstract String getId();
+    abstract String getSize();
 //    public abstract int compareTo(AbstractRow row);
   //  abstract boolean equal(AbstractRow row);
 

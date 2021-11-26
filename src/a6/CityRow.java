@@ -43,5 +43,14 @@ public class CityRow extends AbstractRow {
 
         return cityId;
     }
+    @Override
+    public String getSize(){return population;}
+
+    public String toString(){
+        StringBuilder display = new StringBuilder(String.format("\n%-200s", "City Data"));
+        display.append(String.format("\n%-30s%-50s%-50s", "City Id", "City Name", "Population"));
+        display.append(String.format("\n%-30s%-50s%-50s", cityId, cityName, population));
+        return display.toString();
+    }
 
 }

@@ -36,18 +36,24 @@ public class StadiumRow extends AbstractRow implements Comparable<StadiumRow>   
 
     public boolean equal(StadiumRow row) {
         return this.getTeamName().equals(row.getTeamName()) || Integer.parseInt(this.getStadiumId()) == Integer.parseInt(row.getStadiumId());
-
     }
     public int compareTo(StadiumRow row){
         return 0;
     }
     @Override
     public String getId(){
-
         return stadiumId;
     }
+    @Override
+    public String getSize(){return capacity;}
 //    @Override
-//    public int compareTo(AbstractRow row) {
 //        return 0;
 //    }
+    public String toString(){
+        StringBuilder display = new StringBuilder(String.format("\n%-200s", "Stadium Data"));
+        display.append(String.format("\n%-30s%-50s%-50s%-50s", "Stadium Id", "Stadium Name", "Team Name", "Capacity"));
+        display.append(String.format("\n%-30s%-50s%-50s%-50s", stadiumId, stadiumName, teamName, capacity));
+       return display.toString();
+    }
+
 }
