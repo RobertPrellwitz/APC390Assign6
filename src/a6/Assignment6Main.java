@@ -177,7 +177,7 @@ public class Assignment6Main {
                 int sortMethod = Integer.parseInt(JOptionPane.showInputDialog(null,sortSelect,title,1));
                 switch (sortMethod){
                     case 1:
-                        mytable.bubbleSort();
+                        mytable.idSort();
                         sortType = "ID Sort Ascending";
                         break;
                     case 2:
@@ -193,7 +193,7 @@ public class Assignment6Main {
                         break;
 
                 }
-                mytable.sizeSort();
+                //mytable.sizeSort();
                 JOptionPane.showMessageDialog(null,sortType,"sorting hat",1);
                 break;
             case QUIT:
