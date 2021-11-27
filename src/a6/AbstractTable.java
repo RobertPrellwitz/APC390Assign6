@@ -48,8 +48,8 @@ public abstract class AbstractTable {
         tableRow.add(row);
     }
 
-    public void setRow(AbstractRow row, int spot) {
-        tableRow.add(spot, row);
+    public void setRow(int spot, AbstractRow row ) {
+        tableRow.set(spot, row);
     }
 
     public AbstractRow getRow(int row) {
@@ -102,7 +102,7 @@ public abstract class AbstractTable {
     }
 
     // sorts that table by ID field
-    public void IdSort() {
+    public void insertSort() {
         AbstractRow one, two;
         int size = counter;
         for (int i = 1; i < counter; i++) {
@@ -128,52 +128,49 @@ public abstract class AbstractTable {
         }
     }
 
-    // sorts the current table by size field (capacity for stadium - population for city etc)
+    // sorts the current table by size field (capacity for stadium - population for city etc) - bubble Sort
     public void sizeSort() {
-        AbstractRow one, two;
-        int size = counter;
-        for (int i = 1; i < counter; i++) {
-            one = tableRow.get(i - 1);
-            two = tableRow.get(i);
-
-            double first = Double.parseDouble(one.getSize());
-            double second = Double.parseDouble(two.getSize());
-
-            if (second < first) {
-                AbstractRow temp = two;
-                int location = i;
-                do {
-                    //tableRow.set(location, two);
-                    tableRow.set(location, tableRow.get(location - 1));
-                    location--;
-                }
-                while (location > 0 && Double.parseDouble(tableRow.get(location - 1).getId()) > Double.parseDouble(temp.getId()));
-                {
-                    tableRow.set(location, temp);
-                }
-            }
-        }
-    }
-
-    // sorting
-    public void bubbleSort() {
-        AbstractRow one, two;
-        final int length = counter; // assume locations 0-size-1 are not null!
+        AbstractRow one, two, temp;
+        final int length = counter;
+        if (counter > 1 ){
         for (int size = 0; size < length - 1; size++) {
-            for (int index = 0; index < length - 1 - size; index++){
+            for (int index = 0; index < length - 1 - size; index++) {
                 one = tableRow.get(index);
                 two = tableRow.get(index + 1);
-            if (Integer.parseInt(one.getId()) > Integer.parseInt(two.getId())) {
-                // Swap
-               // temp = one;
-                tableRow.set(index, one);
-                tableRow.set(index + 1, two);
+                double first = Double.parseDouble(one.getSize());
+                double second = Double.parseDouble(two.getSize());
+                if (first > second) {
+                    // Swap
+                    temp = one;
+                    tableRow.set(index, two);
+                    tableRow.set(index + 1, one);
+                }
             }
         }
-        }
+        }else{JOptionPane.showMessageDialog(null, "Not Enough Items to Sort", "Id Sort Error",2);}
     }
 
-
+    // sorting by Stadium / City Id Field - Bubble Sort
+    public void idSort() {
+        AbstractRow one, two, temp;
+        final int length = counter;
+        if (counter > 1) {
+            for (int size = 0; size < length - 1; size++) {
+                for (int index = 0; index < length - 1 - size; index++) {
+                    one = tableRow.get(index);
+                    two = tableRow.get(index + 1);
+                    int first = Integer.parseInt(one.getId());
+                    int second = Integer.parseInt(two.getId());
+                    if (first > second) {
+                        // Swap
+                        temp = one;
+                        tableRow.set(index, two);
+                        tableRow.set(index + 1, temp);
+                    }
+                }
+            }
+        }else {JOptionPane.showMessageDialog(null, "Not Enough Items to Sort", "Id Sort Error",2 );}
+    }
 
     //sorts the tqble by Name Value
     public void nameSort() {
