@@ -10,15 +10,15 @@ import java.util.List;
 
 public abstract class AbstractRow {
 
-    private final List<String> Row = new ArrayList<>();
+    //private final List<String> Row = new ArrayList<>();
 
-    public void setElement(String item){
-        Row.add(item);
-    }
-    public String getElement(int i){
-       String info = Row.get(i);
-       return info;
-    }
+//    public void setElement(String item){
+//        Row.add(item);
+//    }
+//    public String getElement(int i){
+//       String info = Row.get(i);
+//       return info;
+//    }
     abstract String getId();
     abstract String getSize();
 //    public abstract int compareTo(AbstractRow row);
