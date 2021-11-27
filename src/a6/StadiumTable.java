@@ -61,7 +61,7 @@ public class StadiumTable extends AbstractTable {
                         }
                     }
                     if (getCounter() > 1) {
-                        IdSort();
+                        insertSort();
                     }
                 } catch (Exception ignored) {
                 }
@@ -143,36 +143,6 @@ public class StadiumTable extends AbstractTable {
         return duplicate;
     }
 
-    // function to remove row
-//    @Override
-//    public void removeRow() {
-//        try {
-//            int numberToRemoveFromTable = selection();
-//            StadiumRow set;
-//            int range = getCounter();
-//            int number;
-//            boolean check = true;
-//            for (int i = 0; i < range; i++) {
-//                set = (StadiumRow) getRow(i);
-//                number = Integer.parseInt(set.getStadiumId());
-//                if (number == numberToRemoveFromTable) {
-//                    deleteRow(i);
-//                    decrementCounter();
-//                    check = false;
-//                    break;
-//                }
-//            }
-//            if (check) {
-//                JOptionPane.showMessageDialog(null, "The Number you entered: " + numberToRemoveFromTable
-//                                + " did not match a record in the table. \n  Nothing deleted.  Please try again.", "Record Not Found",
-//                        JOptionPane.WARNING_MESSAGE);
-//            }
-//
-//        } catch (NumberFormatException nfe) {
-//            JOptionPane.showMessageDialog(null, nfe, "Invalid Input", JOptionPane.ERROR_MESSAGE);
-//        }
-//    }
-
     // searhes for a row with matching stadium name
     @Override
     public String findRow(String stadium) {
@@ -209,12 +179,12 @@ public class StadiumTable extends AbstractTable {
     // Method to display the current contents of the table
     @Override
     public String displayData() {
-        StringBuilder display = new StringBuilder(String.format("\n%-30s%-50s%-50s%-50s", "Stadium Id", "Stadium Name", "Team Name", "Capacity"));
+        StringBuilder display = new StringBuilder(String.format("\n%-30s%-30s%-30s%-30s", "Stadium Id", "Stadium Name", "Team Name", "Capacity"));
         StadiumRow stadiumRow;
         int count = getCounter();
         for (int i = 0; i < count; i++) {
             stadiumRow = (StadiumRow) getRow(i);
-            display.append(String.format("\n%-30s%-50s%-50s%-50s", stadiumRow.getStadiumId(), stadiumRow.getStadiumName(), stadiumRow.getTeamName(),stadiumRow.getCapacity()));
+            display.append(String.format("\n%-30s%-30s%-30s%-30s", stadiumRow.getStadiumId(), stadiumRow.getStadiumName(), stadiumRow.getTeamName(),stadiumRow.getCapacity()));
         }
         return display.toString();
     }
