@@ -51,7 +51,7 @@ public class CityTable extends AbstractTable {
                 } catch (Exception ignored) {
                 }
                 if (getCounter() > 1) {
-                    IdSort();
+                    insertSort();
                 }
             }
             JOptionPane.showMessageDialog(null, "There were  " + duplicates + " duplicate records in  the data file.\n" +
