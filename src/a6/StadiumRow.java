@@ -51,8 +51,8 @@ public class StadiumRow extends AbstractRow implements Comparable<StadiumRow>   
 //    }
     public String toString(){
         StringBuilder display = new StringBuilder(String.format("\n%-200s", "Stadium Data"));
-        display.append(String.format("\n%-30s%-50s%-50s%-50s", "Stadium Id", "Stadium Name", "Team Name", "Capacity"));
-        display.append(String.format("\n%-30s%-50s%-50s%-50s", stadiumId, stadiumName, teamName, capacity));
+        display.append(String.format("\n%-20s%-50s%-30s%-30s", "Stadium Id", "Stadium Name", "Team Name", "Capacity"));
+        display.append(String.format("\n%-20s%-50s%-30s%-30s", stadiumId, stadiumName, teamName, capacity));
        return display.toString();
     }
 
