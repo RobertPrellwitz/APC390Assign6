@@ -19,11 +19,13 @@ import java.io.IOException;
 public class Assignment6Main {
 
     static final int LOAD = 1, SAVE = 2, ADD_ROW = 3, REMOVE_ROW = 4, FIND_ROW_NAME = 5, FIND_ROW_ID = 6, DISPLAY_TABLE = 7, SORT = 8, QUIT = 9;
-    static final int STADIUM = 1, CITY = 2, END = 3;
+    static final int STADIUM = 1, CITY = 2, CITY_STADIUM = 3, END = 4;
     static String tableType = "Stadium";
     static final AbstractTable myStadium = new StadiumTable();
     static final AbstractTable myCity = new CityTable();
-    static AbstractRow currentRow = null;
+    static final CityStadiumTable CityStadium = new CityStadiumTable();
+    //static AbstractTable myCityStadium = new CityStadiumTable();
+    //static AbstractRow currentRow = null;
 
     static final String welcomeMessage = "This program implements an interactive table builder.\n"
             + "You have two table types to choose from City data and Stadium data\n"
@@ -54,6 +56,7 @@ public class Assignment6Main {
             + "Please select what you want to work on:\n"
             + "   " + STADIUM + ":  Stadium Data\n"
             + "   " + CITY + ":  City Data\n"
+            + "   " + CITY_STADIUM + ":  City Stadium Data\n"
             + "   " + END + ":  End Program";
 
     public static void main(String[] args) throws IOException {
@@ -70,7 +73,7 @@ public class Assignment6Main {
         while (tableSelection != END) {
             try{
             tableSelection = Integer.parseInt(JOptionPane.showInputDialog(null,tableChoice,"Select Table Type",-1));
-            if(tableSelection < 1 || tableSelection > 3){
+            if(tableSelection < 1 || tableSelection > 4){
                 throw new InputException("Number not in range! ");}
                 myTable = tableSet(tableSelection, logo);
                 int userSelection = 0;
@@ -92,10 +95,19 @@ public class Assignment6Main {
         }
     }
 
-    private static void tableType (int i){
-        if (i == 1 )
-            tableType =  "Stadium";
-        else {tableType = "City";}
+    private static void tableType (int i) {
+
+        switch (i) {
+            case 1:
+                tableType = "Stadium";
+                break;
+            case 2:
+                tableType = "City";
+                break;
+            case 3:
+                tableType = "City & Stadium ";
+                break;
+        }
     }
 
     private static void alertMessage(NumberFormatException nfe, int i, int j, Image alert){
@@ -112,6 +124,11 @@ public class Assignment6Main {
                     break;
                 case CITY:
                     userTable = myCity;
+                    break;
+                case CITY_STADIUM:
+                    CityStadium.joinTables(myStadium, myCity);
+                    userTable = CityStadium;
+                    //userTable = myCityStadium;
                     break;
                 case END:
                     JOptionPane.showMessageDialog(null, "Thank you for using our program."
@@ -163,7 +180,7 @@ public class Assignment6Main {
                 String message;
                 int id = Integer.parseInt( JOptionPane.showInputDialog("Please enter the CityID of the data you want to find."));
                 int row = mytable.idSearch(id);
-                if(row<0){message = "Row not Found";}else {message = mytable.getRow(row).toString();};
+                if(row<0){message = "Row not Found";}else {message = mytable.getRow(row).toString();}
                 JOptionPane.showMessageDialog(null, message, tableType, 1);
                 break;
             case DISPLAY_TABLE:
