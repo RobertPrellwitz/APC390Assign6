@@ -19,7 +19,7 @@ public class StadiumTable extends AbstractTable {
 
     public void loadTableFromFile(String fileName) {
         try {
-            Scanner loadFile = new Scanner(new FileReader("src/data/" + fileName));
+            Scanner loadFile = new Scanner(new FileReader("src/" + fileName));
             String input;
 
             int duplicates = 0;
@@ -142,7 +142,20 @@ public class StadiumTable extends AbstractTable {
         }
         return duplicate;
     }
+    @Override
+    public int getSortName(){
+        int i;
+        try {
+            i = Integer.parseInt(JOptionPane.showInputDialog("Which Name element do you want to sort on?\n1:  Stadium Name \n2:  Team Name\n\n Default is Stadium"));
+        }catch (NumberFormatException nfe){
+            i=1;
+        }
+        if(i < 1 || i > 2){i = 1;}
+        return i;
+    }
 
+    @Override
+    public int getSortSize(){return 1;}
     // searhes for a row with matching stadium name
     @Override
     public String findRow(String stadium) {

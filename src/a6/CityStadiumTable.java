@@ -3,6 +3,7 @@ package a6;
 import javax.swing.*;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.Locale;
 
 public class CityStadiumTable extends AbstractTable {
 
@@ -26,19 +27,42 @@ public class CityStadiumTable extends AbstractTable {
                 if (cityId == stadiumId) {
                     CityStadiumRow newRow = new CityStadiumRow(stadiumRow.getStadiumName(), cityRow.getCityID(),
                             stadiumRow.getTeamName(), stadiumRow.getCapacity(), cityRow.getCityName(), cityRow.getCityPop());
-                   boolean check = duplicate(newRow);
-                   if (!check){
-                    setRow(newRow);
-                    incrementCounter();
-                    records++;
-                   }
+                    boolean check = duplicate(newRow);
+                    if (!check) {
+                        setRow(newRow);
+                        incrementCounter();
+                        records++;
+                    }
                 }
             }
         }
-        JOptionPane.showMessageDialog(null, "There were "+ records + " records" +
-                "added to the table through the join function", "Join Operation Results",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "There were " + records + " records" +
+                "added to the table through the join function", "Join Operation Results", JOptionPane.INFORMATION_MESSAGE);
     }
 
+    @Override
+    public int getSortName(){
+        int i;
+        try {
+            i = Integer.parseInt(JOptionPane.showInputDialog("Which Name element do you want to sort on?\n1:  Stadium Name\n2:  City Name \n3:  Team Name\n\n Default is Stadium"));
+        }catch (NumberFormatException nfe){
+            i=1;
+        }
+        if(i < 1 || i > 3){i = 1;}
+        return i;
+    }
+
+    @Override
+    public int getSortSize(){
+        int i;
+        try {
+            i = Integer.parseInt(JOptionPane.showInputDialog("Which Size element do you want to sort on?\n1:  Stadium Capicity\n2:  City Poplulation \n\n Default is Stadium Capacity\n"));
+        }catch (NumberFormatException nfe){
+            i=1;
+        }
+        if(i < 1 || i > 2){i = 1;}
+        return i;
+    }
 
     @Override
     public void loadTableFromFile(String fileName) throws FileNotFoundException {
@@ -73,7 +97,7 @@ public class CityStadiumTable extends AbstractTable {
         try {
             String stadium = JOptionPane.showInputDialog("Please enter the Stadium you want to add to the table");
             String cityStadiumId = JOptionPane.showInputDialog("Please enter the Id for " + stadium);
-            String cityName = JOptionPane.showInputDialog("Please enter the name of the Team that uses the stadium.");
+            String cityName = JOptionPane.showInputDialog("Please enter the name of the City the stadium resides in.");
             String capacity = JOptionPane.showInputDialog("Please enter the capacity of the Stadium:");
             String teamName = JOptionPane.showInputDialog("Please enter the name of the team that uses " + stadium);
             String population = JOptionPane.showInputDialog("Please enter the population of " + cityName + "in millions.");
@@ -118,16 +142,34 @@ public class CityStadiumTable extends AbstractTable {
         for (int i = 0; i < count; i++) {
             cityStadiumRow = (CityStadiumRow) getRow(i);
             display.append(String.format("\n%-20s%-15s%-15s%-25s%-25s%-25s",
-                    cityStadiumRow.getCity(), cityStadiumRow.getPopulation(), cityStadiumRow.getCityStadiumId(),cityStadiumRow.getStadiumName(),
+                    cityStadiumRow.getCity(), cityStadiumRow.getPopulation(), cityStadiumRow.getCityStadiumId(), cityStadiumRow.getStadiumName(),
                     cityStadiumRow.getTeamName(), cityStadiumRow.getCapacity()));
         }
         return display.toString();
     }
 
     @Override
-    public String findRow(String stadium) {
-        String row = "test";
-        return row;
+    public String findRow(String item) {
+        StringBuilder display = new StringBuilder(String.format("\n%-20s%-15s%-15s%-25s%-25s%-25s",
+                "City", "Population", "City/Stadium Id", "Stadium Name", "Team Name", "Capacity"));
+        int count = getCounter(); boolean data = false;
+        item = item.toLowerCase();
+        String rowInfo = "test";
+        CityStadiumRow Row;
+        for (int i = 0; i < count; i++) {
+            Row = (CityStadiumRow) getRow(i);
+            String team = Row.getTeamName().toLowerCase();
+            String city = Row.getCity().toLowerCase();
+            String stadium = Row.getStadiumName().toLowerCase();
+            if (team.contains(item) || city.contains(item) || stadium.contains(item)) {
+                display.append(String.format("\n%-20s%-15s%-15s%-25s%-25s%-25s",
+                        city, Row.getPopulation(), Row.getCityStadiumId(), stadium,
+                        team, Row.getCapacity()));
+                rowInfo = display.toString();
+                data = true;
+            }
+        }
+        return data ? rowInfo : item + " not found!   Sorry!\nPlease try again!" ;
     }
 }
 

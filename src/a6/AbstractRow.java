@@ -20,7 +20,9 @@ public abstract class AbstractRow {
 //       return info;
 //    }
     abstract String getId();
-    abstract String getSize();
+    abstract String getSize(int choice);
+    abstract String getName(int choice);
+
 //    public abstract int compareTo(AbstractRow row);
   //  abstract boolean equal(AbstractRow row);
 

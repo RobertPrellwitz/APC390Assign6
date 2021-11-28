@@ -1,0 +1,12 @@
+Stadiums: Stadium name, City id, Team name, capacity
+Mercedes-Benz Stadium, 21, Atlanta United, 	71000
+Gillette Stadium,	20,	Revolution,	68756
+Lumen Field,	19,	Sounders,	68740
+Soldier Field,	18,	Fire,	63500
+Yankee Stadium,	17,	New York City,	49642
+Dignity Health Sports Park,	16,	Galaxy,	27000
+Exploria Stadium,	15,	Orlando City,	25500
+Providence Park,	14,	Timbers,	25218
+Red Bull Arena,	13,	Red Bulls,	25189
+BBVA Stadium,	12,	Dynamo,	22039
+

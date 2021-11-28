@@ -101,7 +101,7 @@ public abstract class AbstractTable {
         return Integer.parseInt(input);
     }
 
-    // sorts that table by ID field
+    // sorts that table by ID field - used on ingress from file
     public void insertSort() {
         AbstractRow one, two;
         int size = counter;
@@ -131,14 +131,15 @@ public abstract class AbstractTable {
     // sorts the current table by size field (capacity for stadium - population for city etc) - bubble Sort
     public void sizeSort() {
         AbstractRow one, two, temp;
+        int choice = this.getSortSize();
         final int length = counter;
         if (counter > 1 ){
         for (int size = 0; size < length - 1; size++) {
             for (int index = 0; index < length - 1 - size; index++) {
                 one = tableRow.get(index);
                 two = tableRow.get(index + 1);
-                double first = Double.parseDouble(one.getSize());
-                double second = Double.parseDouble(two.getSize());
+                double first = Double.parseDouble(one.getSize(choice));
+                double second = Double.parseDouble(two.getSize(choice));
                 if (first > second) {
                     // Swap
                     temp = one;
@@ -172,8 +173,24 @@ public abstract class AbstractTable {
         }else {JOptionPane.showMessageDialog(null, "Not Enough Items to Sort", "Id Sort Error",2 );}
     }
 
-    //sorts the tqble by Name Value
+    //sorts the tqble by a Name Value
     public void nameSort() {
+        AbstractRow one, two, temp;
+        int choice = this.getSortName();
+        final int length = counter;
+        if (counter > 1 ) {
+            for (int size = 0; size < length - 1; size++) {
+                for (int index = 0; index < length - 1 - size; index++) {
+                    one = tableRow.get(index);
+                    two = tableRow.get(index + 1);
+                    if (one.getName(choice).compareToIgnoreCase(two.getName(choice)) > 0) {
+                        // Swap
+                        tableRow.set(index, two);
+                        tableRow.set(index + 1, one);
+                    }
+                }
+            }
+        }
     }
 
     public AbstractRow repSearch(int searchId) {
@@ -225,7 +242,9 @@ public abstract class AbstractTable {
     //Abstract class methods to be overridden in Concrete Classes
     abstract void addRow();
 
-    //abstract void removeRow();
+    abstract int getSortName();
+
+    abstract int getSortSize();
 
     abstract String displayData();
 

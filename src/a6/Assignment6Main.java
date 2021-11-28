@@ -1,8 +1,8 @@
-/***************************
- * @author Robert Prellwitz
- * prellw24@uwm.edu
- * APC 390 Fall '21
- **************************/
+/*
+ @author Robert Prellwitz
+  * prellw24@uwm.edu
+  * APC 390 Fall '21
+ */
 package a6;
 import javax.swing.*;
 import java.awt.*;
@@ -28,16 +28,18 @@ public class Assignment6Main {
     //static AbstractRow currentRow = null;
 
     static final String welcomeMessage = "This program implements an interactive table builder.\n"
-            + "You have two table types to choose from City data and Stadium data\n"
+            + "You have three table types to choose from:\n City data, Stadium data and combined City Stadium data.\n"
             + "You can add new rows or remove rows from tables.\n"
             + "You can also load a table from a file or save a current\n"
             + "table to a file.\n"
-            + "You can also view the current contents of the file.";
+            + "You can also view the current contents of the data table.\n" +
+              "The City Stadium Table automatically joins the like items\n" +
+              "from the already populated City and Stadium tables. ";
 
     static final String developerMessage = "Program enhanced and improved by:\n"
             + "Robert Prellwitz\n"
             + "APC 390 Fall 21 Semester\n"
-            + "November 12, 2021";
+            + "November 28, 2021";
 
     static final String promptMessage = "What would you like to do?\n"
             + "Please enter the number corresponding to the action you would like:\n"
@@ -59,20 +61,20 @@ public class Assignment6Main {
             + "   " + CITY_STADIUM + ":  City Stadium Data\n"
             + "   " + END + ":  End Program";
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args)  {
         final ImageIcon dontPanic = new ImageIcon("src/data/dontpanic_1024.jpg");
         Image logo = dontPanic.getImage().getScaledInstance(240, 180,0 );
         final ImageIcon newAlert = new ImageIcon("src/data/Alert.png");
         Image alert = newAlert.getImage().getScaledInstance(100, 70,0 );
-        UIManager.put("OptionPane.messageFont",new Font("Courier",Font.CENTER_BASELINE,13));
+        UIManager.put("OptionPane.messageFont",new Font("Courier", Font.BOLD,13));
         JOptionPane.showMessageDialog(null, developerMessage,"Developer Info",JOptionPane.PLAIN_MESSAGE);
         JOptionPane.showMessageDialog(null, welcomeMessage, "Welcome to Table Builder",JOptionPane.PLAIN_MESSAGE);
-        AbstractTable myTable = null;
+        AbstractTable myTable;
         int tableSelection = 0;
 
         while (tableSelection != END) {
             try{
-            tableSelection = Integer.parseInt(JOptionPane.showInputDialog(null,tableChoice,"Select Table Type",-1));
+            tableSelection = Integer.parseInt(JOptionPane.showInputDialog(null,tableChoice,"Select Table Type", JOptionPane.PLAIN_MESSAGE));
             if(tableSelection < 1 || tableSelection > 4){
                 throw new InputException("Number not in range! ");}
                 myTable = tableSet(tableSelection, logo);
@@ -112,9 +114,14 @@ public class Assignment6Main {
 
     private static void alertMessage(NumberFormatException nfe, int i, int j, Image alert){
         JOptionPane.showMessageDialog(null,nfe + "\nYou need to enter a number between " + i + " & " +  j +"\n" +
-                "Please Try again!","Invalid Input",2,new ImageIcon(alert));
+                "Please Try again!","Invalid Input", JOptionPane.WARNING_MESSAGE,new ImageIcon(alert));
     }
 
+    private static void tableDisplay(AbstractTable myTable){
+        JPanel panel;
+        panel = myTable.createPanel();
+        JOptionPane.showMessageDialog(null,panel,tableType +" Data ", JOptionPane.PLAIN_MESSAGE);
+    }
     // Method to determine which Table type the user wants to work with
     private static AbstractTable tableSet(int tableChoice, Image logo)  {
         AbstractTable userTable = null;
@@ -174,24 +181,22 @@ public class Assignment6Main {
                 break;
             case FIND_ROW_NAME:
                 String name = JOptionPane.showInputDialog("Please enter the name in the row you want to find.");
-                JOptionPane.showMessageDialog(null, mytable.findRow(name), tableType, 1);
+                JOptionPane.showMessageDialog(null, mytable.findRow(name), tableType, JOptionPane.INFORMATION_MESSAGE);
                 break;
             case FIND_ROW_ID:
                 String message;
                 int id = Integer.parseInt( JOptionPane.showInputDialog("Please enter the CityID of the data you want to find."));
                 int row = mytable.idSearch(id);
                 if(row<0){message = "Row not Found";}else {message = mytable.getRow(row).toString();}
-                JOptionPane.showMessageDialog(null, message, tableType, 1);
+                JOptionPane.showMessageDialog(null, message, tableType, JOptionPane.INFORMATION_MESSAGE);
                 break;
             case DISPLAY_TABLE:
-                JPanel panel;
-                panel = mytable.createPanel();
-                JOptionPane.showMessageDialog(null,panel," Table Data ",-1);
+                tableDisplay(mytable);
                 break;
             case SORT:
                 String title = "Sorting Hat"; String sortType;
-                String sortSelect = "Please select the sorting method you prefer\n 1 : ID Sort\n2 : Population / Capacity Sort\n3 : Name Sort";
-                int sortMethod = Integer.parseInt(JOptionPane.showInputDialog(null,sortSelect,title,1));
+                String sortSelect = "Please select the sorting method you prefer\n1 : ID Sort\n2 : Population / Capacity Sort\n3 : Name Sort";
+                int sortMethod = Integer.parseInt(JOptionPane.showInputDialog(null,sortSelect,title, JOptionPane.INFORMATION_MESSAGE));
                 switch (sortMethod){
                     case 1:
                         mytable.idSort();
@@ -211,7 +216,8 @@ public class Assignment6Main {
 
                 }
                 //mytable.sizeSort();
-                JOptionPane.showMessageDialog(null,sortType,"sorting hat",1);
+                JOptionPane.showMessageDialog(null,sortType,"sorting hat", JOptionPane.INFORMATION_MESSAGE);
+                    tableDisplay(mytable);
                 break;
             case QUIT:
                 JOptionPane.showMessageDialog(null, "Returning to Main Menu");

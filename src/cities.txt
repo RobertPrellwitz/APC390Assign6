@@ -1,0 +1,12 @@
+My Cities: City, city id, population in millions
+Philadelphia,	23,	1.58
+San Antonio,	24,	1.57
+San Diego,	25,	1.42
+Dallas,	26,	1.34
+Austin, 27,	1.0
+Fort Worth,	28,	0.927
+Jacksonville,	29,	0.92
+Atlanta,	21,	0.512
+Foxboro,	20,	0.02
+Seattle,	19,	0.77
+

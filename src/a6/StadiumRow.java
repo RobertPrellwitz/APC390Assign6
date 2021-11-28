@@ -1,5 +1,7 @@
 package a6;
 
+import javax.swing.*;
+
 public class StadiumRow extends AbstractRow implements Comparable<StadiumRow>   {
     // class data members
     private final String stadiumName;
@@ -40,15 +42,29 @@ public class StadiumRow extends AbstractRow implements Comparable<StadiumRow>   
     public int compareTo(StadiumRow row){
         return 0;
     }
+
     @Override
     public String getId(){
         return stadiumId;
     }
     @Override
-    public String getSize(){return capacity;}
-//    @Override
-//        return 0;
-//    }
+    public String getSize(int choice){return capacity;}
+    @Override
+    public String getName(int choice){
+        String name;
+        switch(choice){
+            case 1:
+                name =  stadiumName;
+                break;
+            case 2:
+                name = teamName;
+                break;
+            default:
+                name = stadiumName;
+        }
+        return name;
+    }
+
     public String toString(){
         StringBuilder display = new StringBuilder(String.format("\n%-200s", "Stadium Data"));
         display.append(String.format("\n%-20s%-50s%-30s%-30s", "Stadium Id", "Stadium Name", "Team Name", "Capacity"));

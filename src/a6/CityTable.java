@@ -21,7 +21,7 @@ public class CityTable extends AbstractTable {
     public void loadTableFromFile(String fileName) {
 
         try {
-            Scanner loadFile = new Scanner(new FileReader("src/data/" + fileName));
+            Scanner loadFile = new Scanner(new FileReader("src/" + fileName));
             String input;
 
             int duplicates = 0;
@@ -61,7 +61,7 @@ public class CityTable extends AbstractTable {
 
             loadFile.close();
         } catch (FileNotFoundException fnfe) {
-            JOptionPane.showMessageDialog(null, fnfe + "\nThe file name / path you entered appers to be invalid.");
+            JOptionPane.showMessageDialog(null, fnfe + "\nThe file name / path you entered appears to be invalid.");
         } catch (NoSuchElementException nsee) {
             JOptionPane.showMessageDialog(null, nsee);
         } catch (Exception exp) {
@@ -127,33 +127,6 @@ public class CityTable extends AbstractTable {
         return duplicate;
     }
 
-    // deletes a data row based on city Id
-//    public void removeRow() {
-//        try {
-//            int numberToRemoveFromTable = selection();
-//            CityRow cityRow;
-//            int range = getCounter();
-//            int number;
-//            boolean check = true;
-//            for (int i = 0; i < range; i++) {
-//                cityRow = (CityRow) getRow(i);
-//                number = Integer.parseInt(cityRow.getCityID());
-//                if (number == numberToRemoveFromTable) {
-//                    deleteRow(i);
-//                    decrementCounter();
-//                    check = false;
-//                    break;
-//                }
-//            }
-//            if (check) {
-//                JOptionPane.showMessageDialog(null, "The Number you enetered: " + numberToRemoveFromTable
-//                                + " did not match a record in the table. \n  Nothing deleted.  Please try again.", "Record Not Found",
-//                        JOptionPane.WARNING_MESSAGE);
-//            }
-//        } catch (NumberFormatException nfe) {
-//            JOptionPane.showMessageDialog(null, nfe, "Invalid Input", JOptionPane.ERROR_MESSAGE);
-//        }
-//    }
 
     // looks for a data row that has a matching city Name
     public String findRow(String name) {
@@ -185,6 +158,11 @@ public class CityTable extends AbstractTable {
         }
         return display.toString();
     }
+
+    public int getSortName() {
+        return 1;
+    }
+    public int getSortSize() {return 1;}
 
     // creates list panel with data to help user determine which item to delete.
 //    public int selection() {

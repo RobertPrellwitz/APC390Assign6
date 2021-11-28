@@ -1,5 +1,9 @@
 package a6;
 
+import jdk.nashorn.internal.scripts.JO;
+
+import javax.swing.*;
+
 public class CityStadiumRow extends AbstractRow{
 
     private final String stadiumName;
@@ -42,6 +46,36 @@ public class CityStadiumRow extends AbstractRow{
     @Override
     public String getId(){return Id;}
     @Override
-    public String getSize(){return capacity;}
-
+    public String getSize(int choice) {
+        String size;
+        switch (choice) {
+            case 1:
+                size = capacity;
+                break;
+            case 2:
+                size = population;
+                break;
+            default:
+                size = capacity;
+        }
+        return size;
+    }
+    @Override
+    public String getName(int choice){
+        String name;
+        switch(choice){
+            case 1:
+                name =  stadiumName;
+                break;
+            case 2:
+                name = city;
+                break;
+            case 3:
+                name = teamName;
+                break;
+            default:
+                name = stadiumName;
+        }
+        return name;
+    }
 }
