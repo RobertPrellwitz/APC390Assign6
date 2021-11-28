@@ -1,8 +1,8 @@
-/***************************
+/*
  * @author Robert Prellwitz
  * prellw24@uwm.edu
  * APC 390 Fall '21
- **************************/
+ */
 package a6;
 
 public class CityRow extends AbstractRow {
@@ -48,8 +48,8 @@ public class CityRow extends AbstractRow {
 
     @Override
     public String getName(int choice){return cityName;}
-    public int getSortName(){return 1;}
-    public int getSortsize(){return 1;}
+    // public int getSortName(){return 1;}
+    // public int getSortsize(){return 1;}
     public String toString(){
         StringBuilder display = new StringBuilder(String.format("\n%-200s", "City Data"));
         display.append(String.format("\n%-30s%-50s%-50s", "City Id", "City Name", "Population"));

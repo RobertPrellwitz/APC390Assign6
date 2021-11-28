@@ -2,8 +2,12 @@ package a6;
 
 import javax.swing.*;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.PrintWriter;
-import java.util.Locale;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Scanner;
 
 public class CityStadiumTable extends AbstractTable {
 
@@ -37,7 +41,7 @@ public class CityStadiumTable extends AbstractTable {
             }
         }
         JOptionPane.showMessageDialog(null, "There were " + records + " records" +
-                "added to the table through the join function", "Join Operation Results", JOptionPane.INFORMATION_MESSAGE);
+                "\nadded to the table through the join function", "Join Operation Results", JOptionPane.INFORMATION_MESSAGE);
     }
 
     @Override
@@ -65,7 +69,65 @@ public class CityStadiumTable extends AbstractTable {
     }
 
     @Override
-    public void loadTableFromFile(String fileName) throws FileNotFoundException {
+    public void loadTableFromFile(String fileName)  {
+
+        try {
+            Scanner loadFile = new Scanner(new FileReader("src/" + fileName));
+            String input;
+
+            int duplicates = 0;
+            int errors = 0;
+            int records = 0;
+            setHeader(loadFile.nextLine());
+            while (loadFile.hasNext()) {
+                input = loadFile.nextLine();
+                boolean isEmpty = (input == null || input.trim().isEmpty());
+                try {
+                    if (!isEmpty) {
+
+                        // OPTIMIZE - Changed from the original Array to use a List - I think this is less efficient
+                        // Professor could you please comment on what is the best Approach
+
+                        List<String> cityStadium = new ArrayList<>();
+                        cityStadium.add(input.split("\\s*,\\s*", 6)[0]);
+                        cityStadium.add(input.split("\\s*,\\s*", 6)[1]);
+                        cityStadium.add(input.split("\\s*,\\s*", 6)[2]);
+                        cityStadium.add(input.split("\\s*,\\s*", 6)[3]);
+                        cityStadium.add(input.split("\\s*,\\s*", 6)[4]);
+                        cityStadium.add(input.split("\\s*,\\s*", 6)[5]);
+                        CityStadiumRow newRow = new CityStadiumRow(cityStadium.get(0), cityStadium.get(1), cityStadium.get(2), cityStadium.get(3), cityStadium.get(4), cityStadium.get(5));
+
+                        if (!isNumeric(cityStadium.get(2)) || !isNumeric(cityStadium.get(5))) {
+                            errors++;
+                            throw new InputException();
+                        }
+                        boolean check = duplicate(newRow);
+                        if (!check) {
+                            setRow(newRow);
+                            incrementCounter();
+                            records++;
+                        } else {
+                            duplicates++;
+                        }
+                    }
+                    if (getCounter() > 1) {
+                        insertSort();
+                    }
+                } catch (Exception ignored) {
+                }
+            }
+            JOptionPane.showMessageDialog(null, "There were  " + duplicates + " duplicate records in  the data file.\n" +
+                    " Duplicate items not added to the table.\n" +
+                    "There were " + errors + " errors in the data - these were ignored.\n" +
+                    records + " items were added to the data table.");
+            loadFile.close();
+        } catch (FileNotFoundException fnfe) {
+            JOptionPane.showMessageDialog(null, fnfe + "\nThe file name / path you entered appers to be invalid.");
+        } catch (NoSuchElementException nsee) {
+            JOptionPane.showMessageDialog(null, nsee);
+        } catch (Exception exp) {
+            JOptionPane.showMessageDialog(null, exp + "\nThe file does not conform to the required data stucture:");
+        }
     }
 
     @Override
@@ -117,7 +179,7 @@ public class CityStadiumTable extends AbstractTable {
                 incrementCounter();
             }
         } catch (Exception exp) {
-            System.out.println(exp);
+            //System.out.println(exp);
         }
     }
 

@@ -74,4 +74,10 @@ public class CityStadiumRow extends AbstractRow{
         }
         return name;
     }
+
+    public String toString(){
+        return String.format("\n%-200s", "City - Stadium Data") + String.format("\n%-15s%-50s%-25s%-25s%-25s%-10s", "Id", "Stadium Name", "Team Name", "Capacity", "City", "Population") +
+                String.format("\n%-15s%-50s%-25s%-25s%-25s%-10s", Id, stadiumName, teamName, capacity, city, population);
+    }
+
 }

@@ -186,6 +186,7 @@ public class Assignment6Main {
             case FIND_ROW_ID:
                 String message;
                 int id = Integer.parseInt( JOptionPane.showInputDialog("Please enter the CityID of the data you want to find."));
+                mytable.idSort();
                 int row = mytable.idSearch(id);
                 if(row<0){message = "Row not Found";}else {message = mytable.getRow(row).toString();}
                 JOptionPane.showMessageDialog(null, message, tableType, JOptionPane.INFORMATION_MESSAGE);

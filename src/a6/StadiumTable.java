@@ -17,6 +17,7 @@ public class StadiumTable extends AbstractTable {
         super();
     }
 
+    @Override
     public void loadTableFromFile(String fileName) {
         try {
             Scanner loadFile = new Scanner(new FileReader("src/" + fileName));
@@ -156,7 +157,7 @@ public class StadiumTable extends AbstractTable {
 
     @Override
     public int getSortSize(){return 1;}
-    // searhes for a row with matching stadium name
+    // searches for a row with matching stadium name
     @Override
     public String findRow(String stadium) {
         String stadiumName = stadium.toLowerCase();
@@ -187,7 +188,6 @@ public class StadiumTable extends AbstractTable {
         }
         return row;
     }
-
 
     // Method to display the current contents of the table
     @Override

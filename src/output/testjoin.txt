@@ -1,0 +1,1 @@
+City, Population, City Stadium ID, Stadium, Team Name, Capacity

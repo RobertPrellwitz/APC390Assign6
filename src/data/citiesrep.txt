@@ -12,7 +12,9 @@ Foxboro,	20,	0.02
 Seattle,	19,	0.77
 Plover, 34, 1
 Dallas, 26, 1.34
-Stevens Point, 26 , 0.21, Wisc
+Stevens Point, 28 , 0.21, Wisc
 Green Bay, 1, 0.34
 Madison, 2, 0.125
 Austin, 27, 1.0
+Eau Claire, 30 , 0.012
+Oshkosh, 31, 0.013

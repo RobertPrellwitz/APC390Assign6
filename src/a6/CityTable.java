@@ -1,8 +1,8 @@
-/***************************
+/*
  * @author Robert Prellwitz
  * prellw24@uwm.edu
  * APC 390 Fall '21
- **************************/
+ */
 package a6;
 
 import javax.swing.*;
@@ -163,15 +163,5 @@ public class CityTable extends AbstractTable {
         return 1;
     }
     public int getSortSize() {return 1;}
-
-    // creates list panel with data to help user determine which item to delete.
-//    public int selection() {
-//        JPanel panel;
-//        panel = createPanel();
-//        String input = JOptionPane.showInputDialog(null, panel, "Please Enter the Stadium ID to Remove", JOptionPane.PLAIN_MESSAGE);
-//        if (!isNumeric(input))
-//            throw new InputException("\nYou must enter the City ID as a number to delete a data element.");
-//        return Integer.parseInt(input);
-//    }
 
 }

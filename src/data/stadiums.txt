@@ -23,3 +23,6 @@ Lambeau Field, one, Packers, 814441
 Orion Stadium, 101, Jetsons, 898888899
 
 Milky, Way, 102, Rebel Alliance , scum, 1222
+Goerke Field, 28, UWSP Pointers, 4214
+Carson Park, 30, UWEC Blugolds, 6500
+Titan Stadium, 31 UW0 Titans, 9800
