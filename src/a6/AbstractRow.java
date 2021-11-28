@@ -10,20 +10,9 @@ import java.util.List;
 
 public abstract class AbstractRow {
 
-    //private final List<String> Row = new ArrayList<>();
-
-//    public void setElement(String item){
-//        Row.add(item);
-//    }
-//    public String getElement(int i){
-//       String info = Row.get(i);
-//       return info;
-//    }
+    // helper methods
     abstract String getId();
     abstract String getSize(int choice);
     abstract String getName(int choice);
-
-//    public abstract int compareTo(AbstractRow row);
-  //  abstract boolean equal(AbstractRow row);
 
 }
