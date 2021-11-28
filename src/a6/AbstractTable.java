@@ -1,8 +1,8 @@
-/***************************
+/*
  * @author Robert Prellwitz
  * prellw24@uwm.edu
  * APC 390 Fall '21
- **************************/
+ */
 package a6;
 
 import javax.swing.*;
@@ -104,7 +104,6 @@ public abstract class AbstractTable {
     // sorts that table by ID field - used on ingress from file
     public void insertSort() {
         AbstractRow one, two;
-        int size = counter;
         for (int i = 1; i < counter; i++) {
             one = tableRow.get(i - 1);
             two = tableRow.get(i);
@@ -113,16 +112,15 @@ public abstract class AbstractTable {
             int second = Integer.parseInt(two.getId());
 
             if (second < first) {
-                AbstractRow temp = two;
+              //  AbstractRow temp = two;
                 int location = i;
                 do {
-                    //tableRow.set(location, two);
                     tableRow.set(location, tableRow.get(location - 1));
                     location--;
                 }
-                while (location > 0 && Integer.parseInt(tableRow.get(location - 1).getId()) > Integer.parseInt(temp.getId()));
+                while (location > 0 && Integer.parseInt(tableRow.get(location - 1).getId()) > Integer.parseInt(two.getId()));
                 {
-                    tableRow.set(location, temp);
+                    tableRow.set(location, two);
                 }
             }
         }
@@ -130,7 +128,7 @@ public abstract class AbstractTable {
 
     // sorts the current table by size field (capacity for stadium - population for city etc) - bubble Sort
     public void sizeSort() {
-        AbstractRow one, two, temp;
+        AbstractRow one, two;
         int choice = this.getSortSize();
         final int length = counter;
         if (counter > 1 ){
@@ -142,13 +140,12 @@ public abstract class AbstractTable {
                 double second = Double.parseDouble(two.getSize(choice));
                 if (first > second) {
                     // Swap
-                    temp = one;
                     tableRow.set(index, two);
                     tableRow.set(index + 1, one);
                 }
             }
         }
-        }else{JOptionPane.showMessageDialog(null, "Not Enough Items to Sort", "Id Sort Error",2);}
+        }else{JOptionPane.showMessageDialog(null, "Not Enough Items to Sort", "Id Sort Error", JOptionPane.WARNING_MESSAGE);}
     }
 
     // sorting by Stadium / City Id Field - Bubble Sort
@@ -170,12 +167,12 @@ public abstract class AbstractTable {
                     }
                 }
             }
-        }else {JOptionPane.showMessageDialog(null, "Not Enough Items to Sort", "Id Sort Error",2 );}
+        }else {JOptionPane.showMessageDialog(null, "Not Enough Items to Sort", "Id Sort Error", JOptionPane.WARNING_MESSAGE);}
     }
 
     //sorts the tqble by a Name Value
     public void nameSort() {
-        AbstractRow one, two, temp;
+        AbstractRow one, two;
         int choice = this.getSortName();
         final int length = counter;
         if (counter > 1 ) {
@@ -193,7 +190,7 @@ public abstract class AbstractTable {
         }
     }
 
-    public AbstractRow repSearch(int searchId) {
+    public AbstractRow rowSearch(int searchId) {
         int size = tableRow.size();
         int first = 0, last = size - 1, middle = first;
         boolean found = false;
