@@ -10,13 +10,13 @@ public class CityStadiumTable extends AbstractTable {
         super();
     }
 
-    public void joinTables(StadiumTable stadiumTable, CityTable cityTable) {
+    public void joinTables(AbstractTable stadiumTable, AbstractTable cityTable) {
 
         cityTable.idSort();
         stadiumTable.idSort();
         int ctSize = cityTable.getCounter();
         int stSize = stadiumTable.getCounter();
-
+        int records = 0;
         for (int ct = 0; ct < ctSize; ct++) {
             CityRow cityRow = (CityRow) cityTable.getRow(ct);
             int cityId = Integer.parseInt(cityRow.getCityID());
@@ -26,10 +26,17 @@ public class CityStadiumTable extends AbstractTable {
                 if (cityId == stadiumId) {
                     CityStadiumRow newRow = new CityStadiumRow(stadiumRow.getStadiumName(), cityRow.getCityID(),
                             stadiumRow.getTeamName(), stadiumRow.getCapacity(), cityRow.getCityName(), cityRow.getCityPop());
+                   boolean check = duplicate(newRow);
+                   if (!check){
                     setRow(newRow);
+                    incrementCounter();
+                    records++;
+                   }
                 }
             }
         }
+        JOptionPane.showMessageDialog(null, "There were "+ records + " records" +
+                "added to the table through the join function", "Join Operation Results",JOptionPane.INFORMATION_MESSAGE);
     }
 
 
@@ -56,7 +63,7 @@ public class CityStadiumTable extends AbstractTable {
             capacity = set.getCapacity();
             city = set.getCity();
             population = set.getPopulation();
-            fileOutput.println(city + ", " + population + ", " + stadium + ", " + teamName + ", " + capacity);
+            fileOutput.println(city + ", " + stadiumId + ", " + population + ", " + stadium + ", " + teamName + ", " + capacity);
         }
         fileOutput.close();
     }
@@ -104,14 +111,14 @@ public class CityStadiumTable extends AbstractTable {
 
     @Override
     public String displayData() {
-        StringBuilder display = new StringBuilder(String.format("\n%-25s%-15s%-10s%-30s%-30s%-30s",
+        StringBuilder display = new StringBuilder(String.format("\n%-20s%-15s%-15s%-25s%-25s%-25s",
                 "City", "Population", "City/Stadium Id", "Stadium Name", "Team Name", "Capacity"));
         CityStadiumRow cityStadiumRow;
         int count = getCounter();
         for (int i = 0; i < count; i++) {
             cityStadiumRow = (CityStadiumRow) getRow(i);
-            display.append(String.format("\n%-25s%-15s%-10s%-30s%-30s%-30s",
-                    cityStadiumRow.getCity(), cityStadiumRow.getPopulation(), cityStadiumRow.getStadiumName(),
+            display.append(String.format("\n%-20s%-15s%-15s%-25s%-25s%-25s",
+                    cityStadiumRow.getCity(), cityStadiumRow.getPopulation(), cityStadiumRow.getCityStadiumId(),cityStadiumRow.getStadiumName(),
                     cityStadiumRow.getTeamName(), cityStadiumRow.getCapacity()));
         }
         return display.toString();
