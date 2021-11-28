@@ -1,9 +1,5 @@
 package a6;
 
-import jdk.nashorn.internal.scripts.JO;
-
-import javax.swing.*;
-
 public class CityStadiumRow extends AbstractRow{
 
     private final String stadiumName;
